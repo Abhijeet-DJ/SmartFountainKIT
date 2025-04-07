@@ -1,0 +1,410 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: #ffffff;
+}
+
+body{
+    background: url('https://demos.creative-tim.com/vision-ui-dashboard-chakra/static/media/background-body-admin.9a5703c1.png') no-repeat center center;
+    background-size: cover;
+}
+
+.Container-Main{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container-Main > h1{
+    width: 100%;
+    text-align: center;
+    height: 4em;
+    background-color: #000000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Road{
+    height: 100%;
+    width: 10%;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Card-Container{
+    height: 98% !important;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.Card{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 42em;
+    width: 45%;
+    flex-wrap: wrap;
+    /* border: 1px solid #ffffff; */
+    gap: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 20px;
+}
+
+.PHGroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    height : 30%;
+    width : 60%; 
+    background: linear-gradient(127.09deg, rgba(6, 11, 40, 0.94) 19.41%, rgba(10, 14, 35, 0.49) 76.65%) border-box;
+    border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.widget-Item{
+    border: none;
+    width: 100%;
+    padding: 2%;
+    border-radius: 10px;
+    box-sizing: border-box; 
+    background: linear-gradient(126.97deg, rgb(6, 12, 41) 28.26%, rgba(4, 12, 48, 0.5) 91.2%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.RGBGroup{
+    height: 30%;
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ButtonGroup{
+    width: 35%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.Image-Fountain{
+    width: 200px;
+    height: 200px;
+    background: url('https://5.imimg.com/data5/SELLER/Default/2023/9/343547886/PQ/DF/OF/2190960/water-fountain.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+#RGB_ON_OFF{
+    width: 70%;
+    height: 40px;
+    background-color: #000000;
+}
+
+#PUMP_ON_OFF{
+    width: 70%;
+    height: 40px;
+    background-color: #000000;
+}
+
+#TDS{
+    display: flex;
+    height: 20%;
+}
+
+#ElemGraph{
+    height: 30%;
+    width: 63%;
+}
+
+#PH{
+    width: 40%;
+    margin: 1em;
+}
+
+#TDS{
+    width : 40%;
+    margin: 1em;
+}
+
+#Turbidity{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#TurbudityGauge{
+   position: relative;
+   left: -3%;
+   top: -10%;
+}
+
+#TurbGaugeSvg{
+    position: relative;
+    top: -14%;
+}
+
+.WaterTemp{
+    width: 49%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: linear-gradient(127.09deg, rgba(6, 11, 40, 0.94) 19.41%, rgba(10, 14, 35, 0.49) 76.65%) border-box;
+    border-radius: 20px;
+}
+
+#WaterTemperature{
+    width: 52%;
+    height: 80px;
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#WaterLevel{
+    width: 50%;
+    height: 40px;
+    margin: 1em;
+}
+
+.RGBValue{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#ColorPalate{
+    background: transparent;
+    margin: 1em;
+    height: 60px;
+    width: 40%;
+    border-radius: 50%;
+    text-align: left;
+    position: relative;
+    left: 30%;
+    top: -55%;
+}
+
+.verStrip{
+    height: 80px;
+    width: 20px;
+    background-color: #ffffff;
+}
+
+.horStrip{
+    height: 20px;
+    width: 80px;
+    background-color: #ffffff;
+}
+
+/* Responsive Design for phone */
+@media (max-width: 768px) {
+
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    .Container-Main {
+        height: auto;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .Card-Container {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        gap: 10px;
+    }
+
+    .Card {
+        width: 90%;
+        height: auto;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .PHGroup,
+    .RGBGroup,
+    .WaterTemp{
+        width: 90%;
+        height: auto;
+    }
+
+    .ButtonGroup{
+        gap: 10px;
+    }
+
+    .Image-Fountain {
+        width: 150px;
+        height: 150px;
+    }
+
+    #ElemGraph {
+        width: 100%;
+        height: 300px;
+    }
+
+    #ColorPalate {
+        width: 60px;
+        height: 60px;
+        left: 0;
+        top: -6em;
+        position: relative;
+        margin: 10px auto;
+    }
+
+    #RGB_ON_OFF,
+    #PUMP_ON_OFF {
+        width: 90%;
+        height: 40px;
+    }
+
+    #TDS,
+    #PH {
+        width: 60%;
+        margin: 5px 0;
+    }
+
+    #WaterTemperature,
+    #WaterLevel {
+        width: 80%;
+        margin: 10px 0;
+    }
+
+    .verStrip{
+        display: none;
+    }
+
+    .horStrip{
+        height: 8px;
+        width: 20px;
+    }
+}
+
+
+
+/* Styles for screens between 768px and 1396px */
+@media (min-width: 769px) and (max-width: 1396px) {
+    .Container-Main {
+        height: auto;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .Card-Container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 95%;
+        height: auto;
+        justify-content: space-around;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .Card {
+        width: 48%;
+        height: auto;
+        padding: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .PHGroup, 
+    .WaterTemp {
+        width: 50%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .RGBGroup{
+        width: 250px;
+    }
+
+    #Turbidity{
+        width: 180px;
+        position: relative;
+        top: -3em;
+        left: 0.3em;
+    }
+
+    .ButtonGroup {
+        width: 40%;
+        height: auto;
+    }
+
+    .Image-Fountain {
+        width: 180px;
+        height: 180px;
+    }
+
+    #ElemGraph {
+        width: 70%;
+        height: 250px;
+    }
+
+    #ColorPalate {
+        width: 80px;
+        height: 80px;
+        left: 20%;
+        top: -6em;
+    }
+
+    #RGB_ON_OFF,
+    #PUMP_ON_OFF {
+        width: 75%;
+        height: 45px;
+    }
+
+    #TDS,
+    #PH {
+        width: 45%;
+        margin: 10px;
+    }
+
+    #WaterTemperature,
+    #WaterLevel {
+        width: 55%;
+        height: 45px;
+        margin: 10px;
+    }
+
+    .verStrip {
+        display: none;
+    }
+
+    .horStrip {
+        height: 18px;
+        width: 70px;
+    }
+}
