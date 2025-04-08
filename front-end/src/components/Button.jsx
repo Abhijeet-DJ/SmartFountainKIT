@@ -1,4 +1,4 @@
-export function Button({ id, name, onClick }) {
+export function Button({ id, name, onClick, color }) {
     return (
         <button 
             id={id} 
@@ -6,7 +6,7 @@ export function Button({ id, name, onClick }) {
             style={{ 
                 padding: '10px 20px', 
                 margin: '5px', 
-                backgroundColor: '#4CAF50', 
+                backgroundColor: color, 
                 color: 'white', 
                 border: 'none', 
                 borderRadius: '5px', 

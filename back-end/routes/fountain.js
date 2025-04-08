@@ -110,23 +110,25 @@ router.put('/data/:id', async (req, res) => {
     try {
         const updateFields = {};
 
-        // Only update fields that exist in the request
+        // Create or overwrite RGB field safely
         if (RGB) {
             updateFields.RGB = {
-                R: RGB.R,
-                G: RGB.G,
-                B: RGB.B
+                R: RGB.r ?? 0,
+                G: RGB.g ?? 0,
+                B: RGB.b ?? 0
             };
         }
+
         if (RGBStatus !== undefined) {
             updateFields.RGBStatus = RGBStatus;
         }
+
         if (pumpStatus !== undefined) {
             updateFields.pumpStatus = pumpStatus;
         }
 
         const updatedFountain = await Fountain.findOneAndUpdate(
-            { fountainId: req.params.id }, 
+            { fountainId: req.params.id },
             { $set: updateFields },
             { new: true }
         );

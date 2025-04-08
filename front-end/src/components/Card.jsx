@@ -94,9 +94,10 @@ export function Card({ id }) {
            
             <GraphComponent />
             <ButtonGroup fountainId={fountainData.fountainId} />
-            <button 
+            <button id={id+"UpdateRGB"}
                 onClick={handleUpdateClick} 
-                style={{ marginTop: '1em', padding: '0.5em 1.5em', backgroundColor: '#4CAF50', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', position : 'relative' , left : '33%' , top : '-5%' }}
+                style={{ marginTop: '1em', padding: '0.5em 1.5em', backgroundColor: '#4CAF50', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', }}
+                //  position : 'relative' , left : '33%' , top : '-5%'
             >
                 Update RGB
             </button>

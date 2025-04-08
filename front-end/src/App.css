@@ -104,6 +104,18 @@ body{
     align-items: center;
 }
 
+#Fountain_1UpdateRGB{
+    position: absolute;
+    left: 26%;
+    top: 60%;
+}
+
+#Fountain_2UpdateRGB{
+    position: absolute;
+    left: 76%;
+    top: 60%;
+}
+
 .Image-Fountain{
     width: 200px;
     height: 200px;

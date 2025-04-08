@@ -85,12 +85,14 @@ export function ButtonGroup({ fountainId }) {
                 value={RGBStatus ? 'On' : 'Off'} 
                 id="RGB_ON_OFF" 
                 name={`RGB: ${RGBStatus ? 'On' : 'Off'}`} 
+                color={RGBStatus ? 'green' : 'red'}
                 onClick={() => toggleStatus('RGBStatus', RGBStatus, setRGBStatus,fountainId)}
             />
             <Button 
                 value={pumpStatus ? 'On' : 'Off'} 
                 id="PUMP_ON_OFF" 
-                name={`PUMP: ${pumpStatus ? 'On' : 'Off'}`} 
+                name={`PUMP: ${pumpStatus ? 'On' : 'Off'}`}
+                color={pumpStatus ? 'green' : 'red'} 
                 onClick={() => toggleStatus('pumpStatus', pumpStatus, setPumpStatus,fountainId)}
             />
         </div>
