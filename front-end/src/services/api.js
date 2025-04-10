@@ -1,7 +1,7 @@
 // services/api.js
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:1407/api'; // Adjust URL if needed
+const API_BASE_URL = 'https://kitfountain.ionode.cloud/api/'; // Adjust URL if needed
 
 // ✅ Fetch Fountain Data by Query or Save Data if Query Exists
 export const fetchOrSaveFountainData = async (queryParams = {}) => {

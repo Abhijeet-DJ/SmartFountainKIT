@@ -3,7 +3,7 @@ import { Button } from './Button';
 import { fetchOrSaveFountainData } from '../services/api';
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:1407/api'; // Adjust if needed
+const API_BASE_URL = 'https://kitfountain.ionode.cloud/api/'; // Adjust if needed
 
 export function ButtonGroup({ fountainId }) {
     const [RGBStatus, setRGBStatus] = useState(false);
