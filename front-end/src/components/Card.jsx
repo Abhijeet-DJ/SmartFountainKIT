@@ -92,7 +92,7 @@ export function Card({ id }) {
             <WaterTemp temp={fountainData?.waterTemperature ?? 0} level={fountainData?.waterLevel ?? 0} />
             <RGBGroup setRgb={updateRGB} fountainId={id} />
            
-            <GraphComponent />
+            <GraphComponent weeklyData={fountainData.weeklyData} />
             <ButtonGroup fountainId={fountainData.fountainId} />
             <button id={id+"UpdateRGB"}
                 onClick={handleUpdateClick} 

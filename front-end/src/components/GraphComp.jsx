@@ -1,35 +1,51 @@
-import { useState } from "react";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { useState, useMemo } from "react";
+import {
+    AreaChart,
+    Area,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    ResponsiveContainer,
+} from "recharts";
 
-const initialData = [
-    { day: "Mon", temperature: 22, turbidity: 5 },
-    { day: "Tue", temperature: 24, turbidity: 8 },
-    { day: "Wed", temperature: 27, turbidity: 12 },
-    { day: "Thu", temperature: 29, turbidity: 15 },
-    { day: "Fri", temperature: 26, turbidity: 10 },
-    { day: "Sat", temperature: 30, turbidity: 18 },
-    { day: "Sun", temperature: 32, turbidity: 20 }
-];
+export function GraphComponent({ weeklyData }) {
+    // Transform the `weeklyData` map into an array usable by Recharts
+    const chartData = useMemo(() => {
+        if (!weeklyData) return [];
 
-export function GraphComponent() {
-    const [zoom, setZoom] = useState({ start: 0, end: initialData.length });
+        // Map through week days in desired order
+        const daysOrder = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+        return daysOrder
+            .map(day => {
+                const entry = weeklyData[day];
+                return entry
+                    ? {
+                          day,
+                          temperature: entry.Temperature,
+                          turbidity: entry.Turbidity,
+                      }
+                    : null;
+            })
+            .filter(Boolean); // remove any null entries
+    }, [weeklyData]);
+
+    const [zoom, setZoom] = useState({ start: 0, end: 7 });
 
     const handleScroll = (event) => {
         event.preventDefault();
-        const step = 1; // Zoom sensitivity
+        const step = 1;
         let newStart = zoom.start;
         let newEnd = zoom.end;
 
         if (event.deltaY > 0) {
-            // Zoom in
             if (newEnd - newStart > 3) {
-                newStart = Math.min(newStart + step, initialData.length - 3);
+                newStart = Math.min(newStart + step, chartData.length - 3);
                 newEnd = Math.max(newEnd - step, newStart + 3);
             }
         } else {
-            // Zoom out
             newStart = Math.max(newStart - step, 0);
-            newEnd = Math.min(newEnd + step, initialData.length);
+            newEnd = Math.min(newEnd + step, chartData.length);
         }
 
         setZoom({ start: newStart, end: newEnd });
@@ -38,7 +54,7 @@ export function GraphComponent() {
     return (
         <div id="ElemGraph" onWheel={handleScroll}>
             <ResponsiveContainer width="100%" height={220}>
-                <AreaChart data={initialData.slice(zoom.start, zoom.end)}>
+                <AreaChart data={chartData.slice(zoom.start, zoom.end)}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="day" />
                     <YAxis
@@ -66,8 +82,20 @@ export function GraphComponent() {
                         contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none", color: "#fff" }}
                         itemStyle={{ color: "#fff" }}
                     />
-                    <Area yAxisId="left" type="monotone" dataKey="temperature" stroke="#FF5733" fill="rgba(255, 87, 51, 0.5)" />
-                    <Area yAxisId="right" type="monotone" dataKey="turbidity" stroke="#3498DB" fill="rgba(52, 152, 219, 0.5)" />
+                    <Area
+                        yAxisId="left"
+                        type="monotone"
+                        dataKey="temperature"
+                        stroke="#FF5733"
+                        fill="rgba(255, 87, 51, 0.5)"
+                    />
+                    <Area
+                        yAxisId="right"
+                        type="monotone"
+                        dataKey="turbidity"
+                        stroke="#3498DB"
+                        fill="rgba(52, 152, 219, 0.5)"
+                    />
                 </AreaChart>
             </ResponsiveContainer>
         </div>

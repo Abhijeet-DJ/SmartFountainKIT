@@ -1,5 +1,6 @@
 import express from 'express';
 import Fountain from '../models/Fountains.js';
+import moment from 'moment';
 
 const router = express.Router();
 
@@ -145,5 +146,63 @@ router.put('/data/:id', async (req, res) => {
         res.status(500).json({ message: 'Server error while updating values' });
     }
 });
+
+
+router.get('/fountains/:id/weekly', async (req, res) => {
+    try {
+        const fountainId = req.params.id;
+        const oneWeekAgo = moment().subtract(6, 'days').startOf('day').toDate();
+
+        const data = await Fountain.aggregate([
+            {
+                $match: {
+                    fountainId,
+                    timestamp: { $gte: oneWeekAgo }
+                }
+            },
+            {
+                $addFields: {
+                    day: { $dayOfWeek: "$timestamp" } // 1 (Sun) to 7 (Sat)
+                }
+            },
+            {
+                $group: {
+                    _id: "$day",
+                    avgTemperature: { $avg: "$waterTemperature" },
+                    avgTurbidity: { $avg: "$Turbidity" },
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    day: "$_id",
+                    Temperature: { $round: ["$avgTemperature", 2] },
+                    Turbidity: { $round: ["$avgTurbidity", 2] },
+                }
+            }
+        ]);
+
+        // Convert MongoDB day index to weekday names
+        const dayMap = {
+            1: "Sun", 2: "Mon", 3: "Tue", 4: "Wed",
+            5: "Thu", 6: "Fri", 7: "Sat"
+        };
+
+        const weeklyData = {};
+        data.forEach(entry => {
+            const dayName = dayMap[entry.day];
+            weeklyData[dayName] = {
+                Temperature: entry.Temperature,
+                Turbidity: entry.Turbidity
+            };
+        });
+
+        res.json(weeklyData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
 
 export default router;
