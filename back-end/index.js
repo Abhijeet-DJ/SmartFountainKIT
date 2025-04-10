@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import mongoose from 'mongoose';
 import fountainRoutes from './routes/fountain.js';
-const cors = require('cors');
+import cors from 'cors';
 
 dotenv.config();
 
