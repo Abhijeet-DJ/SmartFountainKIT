@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import mongoose from 'mongoose';
 import fountainRoutes from './routes/fountain.js';
+const cors = require('cors');
 
 dotenv.config();
 
@@ -13,6 +14,12 @@ const HOST = process.env.HOST || '0.0.0.0';
 
 app.use(express.json());  // ✅ Important for JSON request handling
 app.use(express.urlencoded({ extended: true })); // ✅ Ensures nested data parsing
+
+app.use(cors({
+  origin: '*', // Adjust this for security in production
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 
 // Resolve __dirname for ES Modules
